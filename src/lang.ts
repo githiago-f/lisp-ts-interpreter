@@ -7,7 +7,11 @@ export interface List {
 }
 
 export function ToChars(s: string) {
-    return Array.from(s);
+    return s
+        .replace(/\(/g, ' ( ')
+        .replace(/\)/g, ' ) ')
+        .trim()
+        .split(/\s+/);
 }
 
 export function AsAtom(s: string) {

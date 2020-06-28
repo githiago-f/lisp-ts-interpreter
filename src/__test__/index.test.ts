@@ -1,8 +1,8 @@
 import { ToChars, AsAtom, Atom, AsList, List } from './../lang'
 
 test('it should return abc as an array char', () => {
-    const actual = ToChars('abc');
-    const expected = ['a', 'b', 'c'];
+    const actual = ToChars('("abc")');
+    const expected = ['(', '"abc"', ')'];
     expect(actual).toEqual(expected);
 });
 
@@ -19,7 +19,7 @@ test('it\'s value should be a number', () => {
 })
 
 test('it should return a empty List', ()=>{
-    const actual = AsList('(1 2 3)')
+    const actual = AsList('()')
     const expected = <List> {
         value: []
     }
