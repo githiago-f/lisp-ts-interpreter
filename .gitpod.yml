@@ -1,0 +1,8 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: npm install
+vscode:
+  extensions:
+    - hbenl.vscode-test-explorer@2.19.1:2dP09nbHm3ScIYwcx8M5GQ==
