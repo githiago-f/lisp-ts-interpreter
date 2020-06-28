@@ -1,6 +1,6 @@
 import { ToChars, AsAtom, Atom, AsList, List } from './../lang'
 
-// this code will receive 
+// this tests are related to Lisp's syntaxe
 test('it should return an array string ["(", ""abc"", ")"]', () => {
     const actual = ToChars('("abc")');
     const expected = ['(', '"abc"', ')'];

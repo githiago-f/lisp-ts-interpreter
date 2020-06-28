@@ -40,9 +40,8 @@ export function AsList(s: string, list?: any): List | Atom {
                 list.push(val)
                 tokens.shift()
             }
-            return <List> { value: list.filter(i => i != undefined) };
+            return <List> { value: list.filter((i: any) => i != undefined) };
         } else
             return AsAtom(token);
-        return <List>{ value: list };
     }
 }
