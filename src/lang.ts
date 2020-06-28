@@ -6,7 +6,7 @@ export interface List {
     value: Atom[] | List;
 }
 
-export function ToChars(s: string) {
+export function ToChars(s: string): string[] {
     return s
         .replace(/\(/g, ' ( ')
         .replace(/\)/g, ' ) ')
@@ -14,7 +14,7 @@ export function ToChars(s: string) {
         .split(/\s+/);
 }
 
-export function AsAtom(s: string) {
+export function AsAtom(s: string): Atom {
     let str = s.trim()
     let val = parseFloat(str)
     return isNaN(val) ? 
@@ -22,8 +22,26 @@ export function AsAtom(s: string) {
         <Atom> { value: val };
 }
 
-export function AsList(s: string): List {
-    const element = []
-    const val = ToChars(s.trim());
-    return <List>{value: element};
+export function AsList(s: string, list?: any): List | Atom {
+    if(s.length == 0)
+        throw new Error("Unexpected EOF while reading");
+
+    const tokens = ToChars(s);
+    
+    // remove first and return it
+    const token = tokens.shift()
+
+    if(list == undefined) {
+        return AsList(s, []);
+    } else {
+        if(token === '('){
+            while(tokens[0] !== ')') {
+                const val = AsList(tokens.join(' '), list)
+                list.push(val)
+                tokens.shift()
+            }
+            return <List> { value: list.filter((i: any) => i != undefined) };
+        } else
+            return AsAtom(token);
+    }
 }

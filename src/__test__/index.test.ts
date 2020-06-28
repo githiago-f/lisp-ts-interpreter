@@ -1,6 +1,7 @@
 import { ToChars, AsAtom, Atom, AsList, List } from './../lang'
 
-test('it should return abc as an array char', () => {
+// this tests are related to Lisp's syntaxe
+test('it should return an array string ["(", ""abc"", ")"]', () => {
     const actual = ToChars('("abc")');
     const expected = ['(', '"abc"', ')'];
     expect(actual).toEqual(expected);
@@ -18,9 +19,22 @@ test('it\'s value should be a number', () => {
     expect(actual.value).toBe(expected);
 })
 
-test('it should return a empty List', ()=>{
+test('it should return a empty Array', ()=>{
     const actual = AsList('()')
     const expected = <List> {
         value: []
     }
+    expect(actual).toEqual(expected);
 });
+
+test('it should return a list with "abc" as element', () => {
+    const actual = AsList('("abc")')
+    const expected = <List> {
+        value: [
+            <Atom> {
+                value: '"abc"'
+            }
+        ]
+    }
+    expect(actual).toEqual(expected)
+})
