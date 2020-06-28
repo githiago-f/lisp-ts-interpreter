@@ -1,0 +1,20 @@
+{
+  "name": "lisp-copy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/githiago-f/lisp-copy.git",
+  "author": "githiago-f <tfarias@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "global": "^4.4.0"
+  }
+}
