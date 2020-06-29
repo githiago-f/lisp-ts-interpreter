@@ -17,6 +17,7 @@ export function ToChars(s: string): string[] {
 export function AsAtom(s: string): Atom {
     let str = s.trim()
     let val = parseFloat(str)
+    const isString = str[0] === '"' && str[str.length - 1] === '"'
     return isNaN(val) ? 
         <Atom> { value: str } : 
         <Atom> { value: val };
@@ -41,7 +42,10 @@ export function AsList(s: string, list?: any): List | Atom {
                 tokens.shift()
             }
             return <List> { value: list.filter((i: any) => i != undefined) };
-        } else
+        } else {
             return AsAtom(token);
+        }
     }
 }
+
+export function RunTime(s: string) {}
