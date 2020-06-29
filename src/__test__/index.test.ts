@@ -1,4 +1,4 @@
-import { ToChars, AsAtom, Atom, AsList, List } from './../lang'
+import { ToChars, AsAtom, AsList, Atom, Identifyer } from './../index'
 
 // this tests are related to Lisp's syntaxe
 test('it should return an array string ["(", ""abc"", ")"]', () => {
@@ -8,32 +8,30 @@ test('it should return an array string ["(", ""abc"", ")"]', () => {
 });
 
 test('it should return a atom', () => {
-    const actual = AsAtom('a');
-    const expected = <Atom> { value: 'a' };
-    expect(actual).toEqual(expected);
+    const actual = AsAtom('"a"');
+    const expected = 'a';
+    expect(actual.value).toEqual(expected);
 })
 
 test('it\'s value should be a number', () => {
-    const actual = AsAtom('1');
-    const expected = 1;
+    const actual = AsAtom('1.02');
+    const expected = 1.02;
     expect(actual.value).toBe(expected);
 })
 
 test('it should return a empty Array', ()=>{
     const actual = AsList('()')
-    const expected = <List> {
-        value: []
-    }
+    const expected = {value: []}
     expect(actual).toEqual(expected);
 });
 
 test('it should return a list with "abc" as element', () => {
-    const actual = AsList('("abc")')
-    const expected = <List> {
+    const actual = AsList('(+ "abc" "app")')
+    const expected = {
         value: [
-            <Atom> {
-                value: '"abc"'
-            }
+            new Identifyer('+'),
+            new Atom('abc'),
+            new Atom('app')
         ]
     }
     expect(actual).toEqual(expected)
