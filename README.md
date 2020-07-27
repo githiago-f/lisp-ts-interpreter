@@ -1,4 +1,5 @@
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/githiago-f/lisp-copy)
+[![Travis CI](https://travis-ci.org/githiago-f/lisp-ts-interpreter.svg?branch=master)](https://travis-ci.org/githiago-f/lisp-ts-interpreter.svg?branch=master)
 
 # Lisp interpreter
 This library is nothing more than an interpreter of the Lisp language.
